@@ -1,6 +1,11 @@
 import { createRoot } from 'react-dom/client';
-
-const wave = <p>Hello World</p>;
+import TodoContainer from "./components/TodoContainer"
+import React from 'react';
 
 const root = createRoot(document.getElementById('root'));
-root.render(wave);
+root.render(
+  <React.StrictMode>
+    <TodoContainer />
+  </React.StrictMode>
+  
+);
