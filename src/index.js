@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import TodoContainer from "./classes/components/TodoContainer";
+import TodoContainer from "./functions/components/TodoContainer";
 import React from 'react';
 import './styles.scss';
 

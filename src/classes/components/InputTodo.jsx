@@ -21,7 +21,7 @@ const InputTodo = ({addTodoProps}) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="form-container">
       <input 
         type="text" 
         value={input.title}
