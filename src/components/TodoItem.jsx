@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import s from "./TodoItem.module.scss"
 
 const completedStyle = {
@@ -18,6 +18,14 @@ function TodoItem({ todo, handleChangeProps, delTodo, setUpdate }) {
       }
     )
   }
+
+  useEffect(() => {
+
+    return () => {
+      console.log('Cleaning up...')
+    }
+  }, [])
+  
 
   
   let viewMode = {}
