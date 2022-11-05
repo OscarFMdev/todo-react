@@ -1,6 +1,12 @@
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
-const wave = <p>Hello World</p>;
+import TodoContainer from './functions/components/TodoContainer';
+import './styles.scss';
 
 const root = createRoot(document.getElementById('root'));
-root.render(wave);
+root.render(
+  <StrictMode>
+    <TodoContainer />
+  </StrictMode>,
+
+);
