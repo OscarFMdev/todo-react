@@ -1,69 +1,63 @@
 import React, { useEffect, useState } from "react"
-import s from "./TodoItem.module.scss"
+import styles from "./TodoItem.module.scss"
 
-const completedStyle = {
-  fontStyle: "italic",
-  color: "#595959",
-  opacity: 0.4,
-  textDecoration: "line-through",
-}
+const TodoItem = props => {
+  const [editing, setEditing] = useState(false)
 
-function TodoItem({ todo, handleChangeProps, delTodo, setUpdate }) {
-  const [state, setState] = useState(false);
-  const { id, title, completed } = todo;
   const handleEditing = () => {
-    setState(
-      {
-        editing: true
-      }
-    )
+    setEditing(true)
   }
 
   useEffect(() => {
-
     return () => {
-      console.log('Cleaning up...')
+      console.log("Cleaning up...")
     }
   }, [])
   
 
-  
+  const handleUpdatedDone = event => {
+    if (event.key === "Enter") {
+      setEditing(false)
+    }
+  }
+
+  const completedStyle = {
+    fontStyle: "italic",
+    color: "#595959",
+    opacity: 0.4,
+    textDecoration: "line-through",
+  }
+
+  const { completed, id, title } = props.todo
+
   let viewMode = {}
   let editMode = {}
-  
-  if (state.editing) {
+
+  if (editing) {
     viewMode.display = "none"
   } else {
     editMode.display = "none"
   }
 
-  const handleUpdatedDone = event => {
-    if (event.key === "Enter") {
-      setState({ editing: false })
-    }
-  }
-
   return (
-    <li className={s.item}>
+    <li className={styles.item}>
       <div onDoubleClick={handleEditing} style={viewMode}>
         <input
           type="checkbox"
-          className={s.checkbox}
+          className={styles.checkbox}
           checked={completed}
-          onChange={() => handleChangeProps(id)}
+          onChange={() => props.handleChangeProps(id)}
         />
-        <button onClick={() => delTodo(id)}>Delete</button>
-        <span style={completed ? completedStyle : null}>
-          {title}
-        </span>
+        <button onClick={() => props.deleteTodoProps(id)}>Delete</button>
+        <span style={completed ? completedStyle : null}>{title}</span>
       </div>
-      <input 
-        type="text" 
-        style={editMode} 
-        className={s.textInput}
+      <input
+        type="text"
+        style={editMode}
+        className={styles.textInput}
         value={title}
-        onChange={({ target }) => {
-          setUpdate(target.value, id)
+        onChange={e => {
+          props.setUpdate(e.target.value, id)
         }}
         onKeyDown={handleUpdatedDone}
       />
