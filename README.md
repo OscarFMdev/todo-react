@@ -9,10 +9,9 @@ Todo-react is an App that helps the user to Create, Read, Updtate and Delete (CR
 
 ## Built With
 
-- React (CRA)
+- React [Create React App](https://create-react-app.dev/)
 - JSX
 - CSS
-- [Zeplin](https://zeplin.io/) 
 
 ## Live Demo
 
